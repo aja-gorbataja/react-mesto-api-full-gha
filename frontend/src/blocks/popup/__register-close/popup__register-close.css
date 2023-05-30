@@ -1,0 +1,29 @@
+.popup__register-close {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.22;
+  padding: 0;
+  position: absolute;
+  right: 200px;
+  top: -50px;
+}
+
+.popup__register-close:hover {
+  cursor: pointer;
+  opacity: 0.6;
+  transition: 0.2s;
+}
+
+@media screen and (max-width: 560px) {
+  .popup__register-close {
+    width: 20px;
+    height: 20px;
+    right: 0;
+    top: -36px;
+  }
+}

@@ -1,0 +1,8 @@
+.header__nav {
+  color: #a9a9a9;
+  text-decoration: none;
+}
+
+.header__nav:hover {
+  cursor: pointer;
+}

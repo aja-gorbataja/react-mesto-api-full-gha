@@ -1,0 +1,13 @@
+.form__input-email {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 8px;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+  color: #CCC;
+  background-color: #000;
+}

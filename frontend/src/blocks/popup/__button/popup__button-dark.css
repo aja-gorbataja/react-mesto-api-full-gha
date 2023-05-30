@@ -1,0 +1,29 @@
+.popup__button-dark {
+  width: 100%;
+  height: 50px;
+  background-color: #fff;
+  color: #000;
+  border: none;
+  border-radius: 2px;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.22;
+  margin-top: 186px;
+}
+
+.popup__button-dark:hover {
+  cursor: pointer;
+  opacity: 0.8;
+  transition: 0.2s;
+}
+
+@media screen and (max-width: 560px) {
+  .popup__button-dark {
+    height: 46px;
+    margin-top: 45px;
+    font-size: 14px;
+    line-height: 1.21;
+  }
+}

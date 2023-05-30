@@ -1,0 +1,48 @@
+.profile__edit {
+  background: transparent;
+  border-radius: 50%;
+  margin: 0 30px 0 0;
+  height: 120px;
+  width: 120px;
+  border: none;
+  padding: 0;
+  position: relative;
+}
+
+.profile__edit::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+}
+
+.profile__edit::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  background-image: url("../../../images/editbutton.svg");
+  transition: background-color .3s;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 26px;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.profile__edit:hover::before {
+  opacity: 0.8;
+  background-color: black;
+  transition: opacity 0.3s linear;
+}
+
+.profile__edit:hover::after {
+  opacity: 0.8;
+  transition: opacity 0.3s linear;
+}

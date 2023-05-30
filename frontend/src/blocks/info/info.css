@@ -1,0 +1,13 @@
+.info {
+  margin: 0;
+  position: relative;
+  max-width: 430px;
+  height: 330px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  justify-content: center;
+  align-items: center;
+  padding-left: 60px;
+  padding-right: 60px;
+}
