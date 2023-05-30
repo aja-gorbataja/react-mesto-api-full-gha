@@ -1,4 +1,4 @@
-export const BASE_URL = 'api.lastmesto.nomoredomains.rocks';
+export const BASE_URL = 'https://api.lastmesto.nomoredomains.rocks';
 
 function handleResponse(res) {
   if (res.ok) {
