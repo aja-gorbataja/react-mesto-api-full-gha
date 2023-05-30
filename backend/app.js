@@ -1,11 +1,13 @@
 const express = require('express');
 const { errors } = require('celebrate');
+const cors = require('cors');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
 const router = require('./routes/routes');
 
 const { PORT = 3000 } = process.env;
 const app = express();
+app.use(cors());
 app.use(helmet());
 
 app.use(express.json());
