@@ -140,8 +140,8 @@ function App() {
       })
   }
 
-  function handleReg(data) {
-    auth.register(data)
+  function handleReg(email, password) {
+    auth.register(email, password)
       .then(() => {
         setIsSuccessPopupOpen(true);
         navigate('/sign-in')
@@ -152,11 +152,11 @@ function App() {
       })
   }
 
-  function handleLogIn(data) {
-    auth.authorize(data) 
+  function handleLogIn(email, password) {
+    auth.authorize(email, password) 
       .then((res) => {
         localStorage.setItem('token', res.token);
-        setUserEmail(res.email);
+        setUserEmail(email);
         setLoggedIn(true);
         navigate('/main');
       })

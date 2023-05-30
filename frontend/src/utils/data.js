@@ -1,12 +1,3 @@
-const token = localStorage.getItem('token');
-
-export const config = {
-  url: 'https://api.lastmesto.nomoredomains.rocks',
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization' : `Bearer ${token}`
-  }
-}
 
 export const validationConfig = {
   formSelector: '.popup__form',

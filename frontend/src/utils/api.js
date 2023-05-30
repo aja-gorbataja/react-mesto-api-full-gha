@@ -1,9 +1,10 @@
-import { config } from "./data";
+const config = {
+  url: 'https://api.lastmesto.nomoredomains.rocks'
+}
 
 class Api {
   constructor(config) {
     this.url = config.url;
-    this.headers = config.headers;
   }
 
   _handleResponse(res) {
@@ -14,68 +15,88 @@ class Api {
   }
 
   getCards() {
+    const token = localStorage.getItem('token');
     return fetch(`${this.url}/cards`, {
       method: 'GET',
-      headers: this.headers
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      }
     })
     .then(res => this._handleResponse(res))
   }
 
-  createCard(data) {
+  createCard({name, link}) {
+    const token = localStorage.getItem('token');
     return fetch(`${this.url}/cards`, {
       method: 'POST',
-      headers: this.headers,
-      body: JSON.stringify({
-        name: data.name,
-        link: data.link
-      })
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({name, link})
     })
     .then(res => this._handleResponse(res))
   }
 
   getOwnerInfo() {
+    const token = localStorage.getItem('token');
     return fetch(this.url + `/users/me`, {
       method: 'GET',
-      headers: this.headers
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      }
     })
     .then(res => this._handleResponse(res))
   }
 
-  editProfile(data) {
+  editProfile({name, about}) {
+    const token = localStorage.getItem('token');
     return fetch(`${this.url}/users/me`, {
       method: 'PATCH',
-      headers: this.headers,
-      body: JSON.stringify({
-        name: data.name,
-        about: data.about
-      })
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({name, about})
     })
     .then(res => this._handleResponse(res))
   }
   
-  editAvatar(data) {
+  editAvatar({avatar}) {
+    const token = localStorage.getItem('token');
     return fetch(`${this.url}/users/me/avatar`, {
-      headers: this.headers,
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
       method: 'PATCH',
-      body: JSON.stringify({
-          avatar: data.avatar, 
-      })
+      body: JSON.stringify({avatar})
   })
     .then(res => this._handleResponse(res))
   }
 
   deleteCard(_id) {
+    const token = localStorage.getItem('token');
     return fetch(`${this.url}/cards/${_id}`, {
       method: 'DELETE',
-      headers: this.headers
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      }
     })
     .then(res => this._handleResponse(res))
   }
 
   changeLikeCardStatus(_id, isLiked) {
+    const token = localStorage.getItem('token');
     return fetch(`${this.url}/cards/${_id}/likes`, {
       method: `${isLiked ? 'PUT' : 'DELETE'}`,
-      headers: this.headers
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      }
     })
     .then(res => this._handleResponse(res))
   }
