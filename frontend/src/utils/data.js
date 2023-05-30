@@ -1,7 +1,7 @@
 const token = localStorage.getItem('token');
 
 export const config = {
-  url: 'http://localhost:3000',
+  url: 'api.lastmesto.nomoredomains.rocks',
   headers: {
     'Content-Type': 'application/json',
     'Authorization' : `Bearer ${token}`
