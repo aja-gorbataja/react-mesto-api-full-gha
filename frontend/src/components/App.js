@@ -119,7 +119,7 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some(id => id === currentUser._id);
   
     api.changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
@@ -156,7 +156,7 @@ function App() {
     auth.authorize(data) 
       .then((res) => {
         localStorage.setItem('token', res.token);
-        setUserEmail(data.email);
+        setUserEmail(res.email);
         setLoggedIn(true);
         navigate('/main');
       })
@@ -173,7 +173,7 @@ function App() {
     }
     auth.getToken(token)
       .then((res) => {
-        setUserEmail(res.data.email);
+        setUserEmail(res.email);
         setLoggedIn(true);
         navigate('/main')
       })

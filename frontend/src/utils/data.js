@@ -1,9 +1,10 @@
+const token = localStorage.getItem('token');
 
 export const config = {
-  url: 'https://mesto.nomoreparties.co/v1/cohort-60',
+  url: 'http://localhost:3000',
   headers: {
-    authorization: 'a7d13795-b751-49db-aed9-35354fa7b32f',
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Authorization' : `Bearer ${token}`
   }
 }
 
