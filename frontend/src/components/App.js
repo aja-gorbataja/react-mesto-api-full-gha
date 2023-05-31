@@ -202,7 +202,7 @@ function App() {
           loggedIn={loggedIn} 
           userEmail={userEmail} 
           handleOut={handleOut} />} />
-        <Route path='/' element={loggedIn ? (<Navigate to='/main' replace />) : (<Navigate to='/sign-in' replace />)} />
+        <Route path='*' element={loggedIn ? (<Navigate to='/main' replace />) : (<Navigate to='/sign-in' replace />)} />
       </Routes>
       <Footer />
       <EditProfilePopup 
