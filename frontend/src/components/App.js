@@ -67,7 +67,7 @@ function App() {
         console.log(err)
       })
     }
-  }, []);
+  }, [navigate]);
 
   function handleUpdateUser(newUser) {
     api.editProfile(newUser)
