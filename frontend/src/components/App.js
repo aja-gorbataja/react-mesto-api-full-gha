@@ -54,9 +54,6 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    if (!token) {
-      return
-    }
     auth.getToken(token)
       .then((res) => {
         setUserEmail(res.email);
@@ -67,12 +64,6 @@ function App() {
         console.log(err)
       })
   }, []);
-
-  useEffect(() => {
-    if (loggedIn === true) {
-        navigate("/main");
-    }
-  }, [loggedIn, navigate]);
 
   function handleUpdateUser(newUser) {
     api.editProfile(newUser)
