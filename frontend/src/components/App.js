@@ -54,16 +54,25 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
+    if (token) {
     auth.getToken(token)
       .then((res) => {
-        setUserEmail(res.email);
-        setLoggedIn(true);
-        navigate('/main')
+        if (res) {
+          setLoggedIn(true);
+          setUserEmail(res.email)
+        }
       })
       .catch((err) => {
         console.log(err)
       })
+    }
   }, []);
+
+  useEffect(() => {
+    if (loggedIn) {
+        navigate("/main");
+    }
+ }, [loggedIn, navigate]);
 
   function handleUpdateUser(newUser) {
     api.editProfile(newUser)
