@@ -7,7 +7,7 @@ function handleResponse(res) {
   return Promise.reject(new Error('Произошла ошибка'))
 }
 
-export function register({email, password}) {
+export function register(email, password) {
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
     headers: {
@@ -18,7 +18,7 @@ export function register({email, password}) {
     .then(handleResponse)
 }
 
-export function authorize({email, password}) {
+export function authorize(email, password) {
   return fetch(`${BASE_URL}/signin`, {
     method: 'POST',
     headers: {
