@@ -41,7 +41,7 @@ class Api {
 
   getOwnerInfo() {
     const token = localStorage.getItem('token');
-    return fetch(this.url + `/users/me`, {
+    return fetch(`${this.url}/users/me`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
