@@ -13,7 +13,7 @@ export function register(email, password) {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({email, password})
+    body: JSON.stringify(email, password)
     })
     .then(handleResponse)
 }
@@ -24,7 +24,7 @@ export function authorize(email, password) {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({email, password})
+    body: JSON.stringify(email, password)
     })
     .then(handleResponse)
 }
