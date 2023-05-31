@@ -165,8 +165,8 @@ function App() {
         console.log(err)
       })
     }
-    
-  function checkToken() {
+   
+  useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) {
       return
@@ -180,17 +180,7 @@ function App() {
       .catch((err) => {
         console.log(err)
       })
-  }
-
-  useEffect(() => {
-    checkToken();
-  }, []);
-
-  useEffect(() => {
-    if (loggedIn === true) {
-        navigate("/");
-    }
-}, [loggedIn, navigate]);
+  });
 
   function handleOut() {
     setLoggedIn(false);
