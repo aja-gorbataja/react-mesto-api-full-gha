@@ -158,7 +158,7 @@ function App() {
         localStorage.setItem('token', res.token);
         setUserEmail(email);
         setLoggedIn(true);
-        navigate('/main');
+        navigate('/');
       })
       .catch((err) => {
         setIsFailPopupOpen(true);
@@ -175,7 +175,7 @@ function App() {
       .then((res) => {
         setUserEmail(res.email);
         setLoggedIn(true);
-        navigate('/main')
+        navigate('/')
       })
       .catch((err) => {
         console.log(err)
@@ -185,6 +185,12 @@ function App() {
   useEffect(() => {
     checkToken();
   }, []);
+
+  useEffect(() => {
+    if (loggedIn === true) {
+        navigate("/");
+    }
+}, [loggedIn, navigate]);
 
   function handleOut() {
     setLoggedIn(false);
