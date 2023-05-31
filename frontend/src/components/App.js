@@ -180,7 +180,7 @@ function App() {
       .catch((err) => {
         console.log(err)
       })
-  });
+  }, []);
 
   function handleOut() {
     setLoggedIn(false);
@@ -196,7 +196,7 @@ function App() {
       <Routes>
         <Route path='/sign-in' element={<Login handleLogIn={handleLogIn} />} />
         <Route path='/sign-up' element={<Register handleReg={handleReg} />} />
-        <Route path='/main' element={<ProtectedRoute 
+        <Route path='/' element={<ProtectedRoute 
           element={Main} 
           cards={cards} 
           onEditProfile={handleEditProfileClick} 
