@@ -59,6 +59,7 @@ function App() {
       .then((res) => {
         if (res) {
           setLoggedIn(true);
+          navigate("/main");
           setUserEmail(res.email)
         }
       })
@@ -67,12 +68,6 @@ function App() {
       })
     }
   }, []);
-
-  useEffect(() => {
-    if (loggedIn) {
-        navigate("/main");
-    }
- }, [loggedIn, navigate]);
 
   function handleUpdateUser(newUser) {
     api.editProfile(newUser)

@@ -10,8 +10,7 @@ function Login({ handleLogIn }) {
     setFormValue({ ...formValue, [name]: value})
   }
 
-  function handleSubmit(evt) {
-    evt.preventDefault();
+  function handleSubmit() {
     handleLogIn(formValue)
   }
 
