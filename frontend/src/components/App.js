@@ -43,19 +43,36 @@ function App() {
             console.log(err)
           })
         }
+    api.getOwnerInfo()
+        .then((data) => {
+          setCurrentUser(data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
   }, [loggedIn])
 
   useEffect(() => {
-    if (loggedIn) {
-    api.getOwnerInfo()
-      .then((data) => {
-        setCurrentUser(data)
+    const token = localStorage.getItem('token');
+    if (!token) {
+      return
+    }
+    auth.getToken(token)
+      .then((res) => {
+        setUserEmail(res.email);
+        setLoggedIn(true);
+        navigate('/main')
       })
       .catch((err) => {
         console.log(err)
       })
+  }, []);
+
+  useEffect(() => {
+    if (loggedIn === true) {
+        navigate("/main");
     }
-  }, [loggedIn])
+  }, [loggedIn, navigate]);
 
   function handleUpdateUser(newUser) {
     api.editProfile(newUser)
@@ -158,29 +175,13 @@ function App() {
         localStorage.setItem('token', res.token);
         setUserEmail(email);
         setLoggedIn(true);
-        navigate('/');
+        navigate('/main');
       })
       .catch((err) => {
         setIsFailPopupOpen(true);
         console.log(err)
       })
     }
-   
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      return
-    }
-    auth.getToken(token)
-      .then((res) => {
-        setUserEmail(res.email);
-        setLoggedIn(true);
-        navigate('/')
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }, []);
 
   function handleOut() {
     setLoggedIn(false);
@@ -188,15 +189,13 @@ function App() {
     navigate('/sign-in')
   }
 
-  
-
   return (
     <CurrentUserContext.Provider value={currentUser}>
     <div className="page">
       <Routes>
         <Route path='/sign-in' element={<Login handleLogIn={handleLogIn} />} />
         <Route path='/sign-up' element={<Register handleReg={handleReg} />} />
-        <Route path='/' element={<ProtectedRoute 
+        <Route path='/main' element={<ProtectedRoute 
           element={Main} 
           cards={cards} 
           onEditProfile={handleEditProfileClick} 
@@ -208,7 +207,7 @@ function App() {
           loggedIn={loggedIn} 
           userEmail={userEmail} 
           handleOut={handleOut} />} />
-        <Route path='/' element={loggedIn ? (<Navigate to='/' replace />) : (<Navigate to='/sign-in' replace />)} />
+        <Route path='/' element={loggedIn ? (<Navigate to='/main' replace />) : (<Navigate to='/sign-in' replace />)} />
       </Routes>
       <Footer />
       <EditProfilePopup 
