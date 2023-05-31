@@ -43,11 +43,11 @@ module.exports.createUser = (req, res, next) => {
     .then((hash) => User.create({
       name, about, avatar, email, password: hash,
     }))
-    .then(() => res.status(201).send({
-      data: {
+    .then(() => res.status(201).send(
+      {
         name, about, avatar, email,
       },
-    }))
+    ))
     .catch((err) => {
       if (err.code === 11000) {
         return next(new ConflictError('Пользователь с таким email уже зарегистрирован'));
@@ -60,8 +60,7 @@ module.exports.createUser = (req, res, next) => {
 };
 
 module.exports.login = (req, res, next) => {
-  const { email, password } = req.body;
-  User.findUserByCredentials(email, password)
+  User.findUserByCredentials(req.body.email, req.body.password)
     .then((user) => {
       const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
       res.send({ token });
