@@ -59,7 +59,7 @@ function App() {
       .then((res) => {
         if (res) {
           setLoggedIn(true);
-          navigate('/main');
+          navigate('/');
           setUserEmail(res.email)
         }
       })
@@ -170,7 +170,7 @@ function App() {
         localStorage.setItem('token', res.token);
         setUserEmail(email);
         setLoggedIn(true);
-        navigate('/main');
+        navigate('/');
       })
       .catch((err) => {
         setIsFailPopupOpen(true);
@@ -190,7 +190,7 @@ function App() {
       <Routes>
         <Route path='/sign-in' element={<Login handleLogIn={handleLogIn} />} />
         <Route path='/sign-up' element={<Register handleReg={handleReg} />} />
-        <Route path='/main' element={<ProtectedRoute 
+        <Route path='/' element={<ProtectedRoute 
           element={Main} 
           cards={cards} 
           onEditProfile={handleEditProfileClick} 
@@ -202,7 +202,7 @@ function App() {
           loggedIn={loggedIn} 
           userEmail={userEmail} 
           handleOut={handleOut} />} />
-        <Route path='*' element={loggedIn ? (<Navigate to='/main' replace />) : (<Navigate to='/sign-in' replace />)} />
+        <Route path='*' element={loggedIn ? (<Navigate to='/' replace />) : (<Navigate to='/sign-in' replace />)} />
       </Routes>
       <Footer />
       <EditProfilePopup 
