@@ -5,3 +5,9 @@
   display: flex;
   height: calc(100vh - 270px);
 }
+
+@media screen and (max-width: 768px) {
+  .popup_register {
+    height: calc(100vh - 180px);
+  }
+}

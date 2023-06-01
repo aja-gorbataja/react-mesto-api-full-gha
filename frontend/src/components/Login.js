@@ -13,12 +13,6 @@ function Login({ handleLogIn }) {
   function handlePasswordInput(evt) {
     setPassword(evt.target.value);
   }
-  //const [ formValue, setFormValue ] = useState({email: '', password: ''});
-
-  /*function handleChange(evt) {
-    const { name, value } = evt.target;
-    setFormValue({ ...formValue, [name]: value})
-  }*/
 
   function handleSubmit(evt) {
     evt.preventDefault();
